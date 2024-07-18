@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Shoaib-full-microservices.iml" filepath="$PROJECT_DIR$/.idea/Shoaib-full-microservices.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/click/click.iml" filepath="$PROJECT_DIR$/services/click/click.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/config-server/config-server.iml" filepath="$PROJECT_DIR$/services/config-server/config-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/customer/customer.iml" filepath="$PROJECT_DIR$/services/customer/customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/discovery/discovery.iml" filepath="$PROJECT_DIR$/services/discovery/discovery.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/product/product.iml" filepath="$PROJECT_DIR$/services/product/product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/services/test/test.iml" filepath="$PROJECT_DIR$/services/test/test.iml" />
+    </modules>
+  </component>
+</project>
