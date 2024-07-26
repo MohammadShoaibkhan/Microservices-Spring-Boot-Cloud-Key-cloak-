@@ -8,5 +8,23 @@ spring:
     password: shoaib
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: validate
+    database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+#    flyway:
+#      baseline-on-migrate: true
+#      enabled: true
+#      baseline-description: "init"
+#      baseline-version: 0
+#      user: ${spring.datasource.username}
+#      password: ${spring.datasource.password}
+#  flyway:
+#   enabled: true
+#  locations: classpath:/db/migration
+#  defaultSchema: XT
+#  table: FLYWAY_SCHEMA_HISTORY
+#     baselineVersion: 1
+#        baselineOnMigrate: true
+#        user: our admin product
+#  password: ${spring.datasource.password}
