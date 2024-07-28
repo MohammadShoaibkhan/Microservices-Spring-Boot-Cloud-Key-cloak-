@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 import static org.apache.http.HttpHeaders.CONTENT_TYPE;
+import static org.springframework.http.HttpMethod.POST;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Service
@@ -36,7 +37,7 @@ public class ProductClient {
                 };
         ResponseEntity<List<PurchaseResponse>> responseEntity = restTemplate.exchange(
                 productUrl + "/purchase",
-                HttpMethod.POST,
+                POST,
                 requestEntity,
                 responseType
         );

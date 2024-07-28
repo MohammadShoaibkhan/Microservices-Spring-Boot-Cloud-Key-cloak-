@@ -6,11 +6,14 @@ import com.shoaibtest.kafka.OrderConfirmation;
 import com.shoaibtest.kafka.OrderProducer;
 import com.shoaibtest.orderline.OrderLineRequest;
 import com.shoaibtest.orderline.OrderLineService;
+import com.shoaibtest.payment.PaymentClient;
+import com.shoaibtest.payment.PaymentRequest;
 import com.shoaibtest.product.ProductClient;
 import com.shoaibtest.product.PurchaseRequest;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -22,12 +25,12 @@ public class OrderService {
     private final OrderRepository repository;
     private final CustomerClient customerClient;
     private final ProductClient productClient;
-
     private final OrderLineService orderLineService;
-
     private final OrderMapper mapper;
-
     private final OrderProducer orderProducer;
+
+    private final PaymentClient paymentClient;
+    @Transactional
     public Integer createdOrder(OrderRequest request) {
         // check the customer --> OpenFeign
         var customer = this.customerClient.findCustomerById(request.customerId())
@@ -48,7 +51,17 @@ public class OrderService {
              );
         }
 
-        // todo start payment process
+        //  start payment process
+        var paymentRequest = new PaymentRequest(
+                request.amount(),
+                request.paymentMethod(),
+                order.getId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.requestOrderPayment(paymentRequest);
+
+
 
         // send the order confirmation --> notification-ms (kafka)
         orderProducer.sendOrderConfirmation(

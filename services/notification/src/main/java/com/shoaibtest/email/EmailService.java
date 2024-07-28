@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -98,7 +97,7 @@ public class EmailService {
             mailSender.send(mimeMessage);
             log.info(String.format("INFO - Email successfully send to %s with template %s,", destinationEmail, templateName));
         }catch (MessagingException e){
-            log.warn("WARNING -Cannot send email to {}" , destinationEmail);
+            log.warn("WARNING - Cannot send email to {}" , destinationEmail);
         }
     }
 }

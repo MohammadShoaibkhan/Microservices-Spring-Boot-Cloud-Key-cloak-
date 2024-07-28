@@ -3,7 +3,7 @@ package com.shoaibtest.exception;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = true)
 @Data
 public class BusinessException extends RuntimeException {
 
