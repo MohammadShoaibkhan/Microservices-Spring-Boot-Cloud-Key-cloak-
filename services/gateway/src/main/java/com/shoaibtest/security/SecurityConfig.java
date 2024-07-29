@@ -9,6 +9,7 @@ import org.springframework.security.web.server.SecurityWebFilterChain;
 
 @Configuration
 @EnableWebFluxSecurity
+
 public class SecurityConfig {
 
     @Bean
@@ -24,5 +25,6 @@ public class SecurityConfig {
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()));
         return serverHttpSecurity.build();
     }
+
 }
 
